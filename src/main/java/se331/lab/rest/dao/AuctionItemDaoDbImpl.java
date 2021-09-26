@@ -37,6 +37,6 @@ public class AuctionItemDaoDbImpl implements AuctionDao{
 
     @Override
     public Page<AuctionItem> getAuctionItem(String title, Pageable page) {
-        return null;
+        return auctionItemRepository.findByDescriptionIgnoreCaseContaining(title, page);
     }
 }

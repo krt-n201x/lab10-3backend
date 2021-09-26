@@ -8,5 +8,6 @@ public interface AuctionItemService {
     Integer getAuctionItemSize();
     Page<AuctionItem> getAuctionItems(Integer pageSize, Integer page);
     AuctionItem getAuctionItem(Long id);
-    Page<AuctionItem> getAuctionItem(String title, Pageable page);
+    AuctionItem save(AuctionItem auctionItem);
+    Page<AuctionItem> getAuctionItems(String title, Pageable page);
 }

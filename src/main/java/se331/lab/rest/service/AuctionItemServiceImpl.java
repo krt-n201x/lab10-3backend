@@ -6,7 +6,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se331.lab.rest.dao.AuctionDao;
+import se331.lab.rest.dao.BidDao;
 import se331.lab.rest.entity.AuctionItem;
+import se331.lab.rest.entity.Bid;
+
+import javax.transaction.Transactional;
 
 @Service
 public class AuctionItemServiceImpl implements AuctionItemService {
@@ -27,9 +31,14 @@ public class AuctionItemServiceImpl implements AuctionItemService {
         return auctionDao.getAuctionItem(id);
     }
 
+    @Override
+    @Transactional
+    public AuctionItem save(AuctionItem auctionItem) {
+        return auctionDao.save(auctionItem);
+    }
 
     @Override
-    public Page<AuctionItem> getAuctionItem(String title, Pageable page) {
-        return null;
+    public Page<AuctionItem> getAuctionItems(String title, Pageable page) {
+        return auctionDao.getAuctionItem(title, page);
     }
 }
