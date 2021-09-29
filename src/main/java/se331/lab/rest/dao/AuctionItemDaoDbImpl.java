@@ -30,13 +30,18 @@ public class AuctionItemDaoDbImpl implements AuctionDao{
         return auctionItemRepository.findById(id).orElse(null);
     }
 
+//    @Override
+//    public AuctionItem save(AuctionItem auctionItem) {
+//        return auctionItemRepository.save(auctionItem);
+//    }
+//
+//    @Override
+//    public Page<AuctionItem> getAuctionItem(String title, Pageable page) {
+//        return auctionItemRepository.findByDescriptionIgnoreCaseContaining(title, page);
+//    }
+//
     @Override
-    public AuctionItem save(AuctionItem auctionItem) {
-        return auctionItemRepository.save(auctionItem);
-    }
-
-    @Override
-    public Page<AuctionItem> getAuctionItem(String title, Pageable page) {
-        return auctionItemRepository.findByDescriptionIgnoreCaseContaining(title, page);
+    public Page<AuctionItem> getAuctionItem(Integer amount, Pageable page) {
+        return auctionItemRepository.findBySuccessfulBid_AmountLessThan(amount, page);
     }
 }

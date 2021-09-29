@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import se331.lab.rest.entity.Bid;
 import se331.lab.rest.service.BidService;
 import se331.lab.rest.util.LabMapper;
 
@@ -13,7 +14,7 @@ public class BidController {
     BidService bidService;
     @GetMapping("/bids")
     ResponseEntity<?> getBids(){
-        return ResponseEntity.ok(LabMapper.INSTANCE.getBidDTO(bidService.getAllBid()));
+        return ResponseEntity.ok(LabMapper.INSTANCE.getBidDTO((Bid) bidService.getAllBid()));
     }
 
 }

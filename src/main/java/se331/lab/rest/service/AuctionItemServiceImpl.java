@@ -31,14 +31,19 @@ public class AuctionItemServiceImpl implements AuctionItemService {
         return auctionDao.getAuctionItem(id);
     }
 
+//    @Override
+//    @Transactional
+//    public AuctionItem save(AuctionItem auctionItem) {
+//        return auctionDao.save(auctionItem);
+//    }
+//
+//    @Override
+//    public Page<AuctionItem> getAuctionItems(String title, Pageable page) {
+//        return auctionDao.getAuctionItem(title, page);
+//    }
+//
     @Override
-    @Transactional
-    public AuctionItem save(AuctionItem auctionItem) {
-        return auctionDao.save(auctionItem);
-    }
-
-    @Override
-    public Page<AuctionItem> getAuctionItems(String title, Pageable page) {
-        return auctionDao.getAuctionItem(title, page);
+    public Page<AuctionItem> getAuctionItems(Integer amount, Pageable pageable) {
+        return auctionDao.getAuctionItem(amount,pageable);
     }
 }

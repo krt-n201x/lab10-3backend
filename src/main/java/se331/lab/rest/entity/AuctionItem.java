@@ -24,5 +24,5 @@ public class AuctionItem {
     List<Bid> bids = new ArrayList<>();
 
     @OneToOne
-    Bid succesfulBid;
+    Bid successfulBid;
 }

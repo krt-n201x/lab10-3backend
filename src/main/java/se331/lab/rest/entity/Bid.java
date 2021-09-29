@@ -3,6 +3,7 @@ package se331.lab.rest.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -16,7 +17,7 @@ public class Bid {
     @EqualsAndHashCode.Exclude
     Long id;
     Integer amount;
-    String datetime;
+    LocalDateTime datetime;
 
     @ManyToOne
     AuctionItem item;

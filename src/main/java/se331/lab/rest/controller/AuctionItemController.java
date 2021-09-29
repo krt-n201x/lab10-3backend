@@ -21,14 +21,14 @@ public class AuctionItemController {
     @GetMapping("auctionitems")
     public ResponseEntity<?> getAuctionItemLists(@RequestParam(value = "_limit", required = false) Integer perPage
             , @RequestParam(value = "_page", required = false) Integer page
-            , @RequestParam(value= "description", required = false) String description) {
+            , @RequestParam(value= "bid", required = false) Integer bid) {
             perPage = perPage == null?3 : perPage;
             page = page == null?1 : page;
             Page<AuctionItem> pageOutput;
-            if (description == null) {
+            if (bid == null) {
                 pageOutput = auctionItemService.getAuctionItems(perPage, page);
             } else {
-                pageOutput = auctionItemService.getAuctionItems(description, PageRequest.of(page - 1, perPage));
+                pageOutput = auctionItemService.getAuctionItems(bid, PageRequest.of(page - 1, perPage));
             }
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
@@ -46,12 +46,12 @@ public class AuctionItemController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
     }
-
-    @PostMapping("/auctionitems")
-    public ResponseEntity<?> addAuctionItem(@RequestBody AuctionItem auctionItem){
-        AuctionItem output = auctionItemService.save(auctionItem);
-        return ResponseEntity.ok(LabMapper.INSTANCE.getAuctionItemDto(output));
-
-
-    }
+//
+//    @PostMapping("/auctionitems")
+//    public ResponseEntity<?> addAuctionItem(@RequestBody AuctionItem auctionItem){
+//        AuctionItem output = auctionItemService.save(auctionItem);
+//        return ResponseEntity.ok(LabMapper.INSTANCE.getAuctionItemDto(output));
+//
+//
+//    }
 }

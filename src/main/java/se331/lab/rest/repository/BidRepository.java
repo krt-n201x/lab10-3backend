@@ -6,5 +6,5 @@ import se331.lab.rest.entity.Bid;
 import java.util.List;
 
 public interface BidRepository extends JpaRepository<Bid,Long> {
-    List<Bid> findAll();
+//    List<Bid> findAll();
 }
